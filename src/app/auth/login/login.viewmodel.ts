@@ -16,8 +16,6 @@ export const useLoginViewModel = () => {
     validationSchema,
   });
 
-  console.log(errors, 'errors');
-
   return {
     errors,
     handleSubmit,

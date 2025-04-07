@@ -110,7 +110,6 @@ export const useAuthStore = create(
           const response = await new Promise<{ data: string; status: number }>(
             (resolve, reject) => {
               setTimeout(() => {
-                console.log(code, 'code');
                 if (code === '111111') {
                   resolve({
                     data: 'Success',
@@ -161,7 +160,6 @@ export const useAuthStore = create(
         }
       },
       logout: async () => {
-        console.log('Logout');
         set({ token: null });
       },
     }),

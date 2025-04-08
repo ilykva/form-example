@@ -1,5 +1,6 @@
 import { FC, ReactNode } from 'react';
 import type { Metadata } from 'next';
+import styles from '@/app/auth/auth.module.css';
 
 type Props = {
   children: ReactNode;
@@ -10,7 +11,12 @@ export const metadata: Metadata = {
 };
 
 const Layout: FC<Props> = ({ children }) => {
-  return children;
+  return (
+    <>
+      <h1 className={styles.header}>Login</h1>
+      {children}
+    </>
+  );
 };
 
 export default Layout;

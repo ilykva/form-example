@@ -6,7 +6,8 @@ import { useRegisterViewModel } from './register.viewmodel';
 import styles from '@/app/auth/auth.module.css';
 
 const Register = () => {
-  const { handleChange, handleSubmit, errors } = useRegisterViewModel();
+  const { handleChange, handleSubmit, errors, serverError } =
+    useRegisterViewModel();
 
   return (
     <div>
@@ -43,6 +44,7 @@ const Register = () => {
           <button type="submit" className={styles.btn}>
             Sign up
           </button>
+          {serverError && <div className={styles.error}>{serverError}</div>}
         </div>
         <div className={styles.nav}>
           <div>Already have an account?</div>

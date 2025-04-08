@@ -62,6 +62,7 @@
 }
 
 .forgot {
+  z-index: 2;
   display: flex;
   justify-content: center;
   user-select: none;
@@ -81,6 +82,7 @@
 }
 
 .btnWrapper {
+  position: relative;
   padding: 1.5rem 0 3rem 0;
   width: 100%;
   display: grid;
@@ -155,4 +157,14 @@
   display: grid;
   gap: 1rem;
   font-weight: 300;
+}
+
+.error {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  color: red;
+  font-size: 0.75rem;
+  white-space: nowrap;
 }

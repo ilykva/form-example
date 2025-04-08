@@ -1,6 +1,6 @@
 'use client';
 import { FC, ReactNode, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useAuthStore } from '@/store/authStore';
 
 type Props = {
@@ -8,8 +8,9 @@ type Props = {
 };
 
 export const AuthProvider: FC<Props> = ({ children }) => {
-  const { token } = useAuthStore();
+  const { token, cleanError } = useAuthStore();
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     if (!token) {
@@ -18,6 +19,10 @@ export const AuthProvider: FC<Props> = ({ children }) => {
       router.push('/dashboard');
     }
   }, [token]);
+
+  useEffect(() => {
+    cleanError();
+  }, [pathname]);
 
   return children;
 };

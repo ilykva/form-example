@@ -6,6 +6,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   type: 'text' | 'password' | 'email' | 'number';
   label: string;
   error?: string;
+  dirty?: boolean;
   icon?: ReactElement;
 }
 

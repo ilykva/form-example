@@ -20,6 +20,7 @@ interface AuthState {
   confirmRestore: (code: string, callback?: () => void) => void;
   changePassword: (password: string, callback?: () => void) => void;
   logout: () => void;
+  cleanError: () => void;
 }
 
 export const useAuthStore = create(
@@ -53,28 +54,31 @@ export const useAuthStore = create(
           );
           set({ token: response.token, loading: false });
         } catch (error) {
+          set({
+            error: error as string,
+          });
           console.error(error);
         }
       },
-      registration: async ({ email, password }) => {
+      registration: async ({ email }) => {
         set({ loading: true });
         try {
           const response = await new Promise<{ token: string }>(
             (resolve, reject) => {
               setTimeout(() => {
-                if (
-                  email === 'user@example.com' &&
-                  password === 'password123'
-                ) {
-                  resolve({ token: 'fake-jwt-token' });
+                if (email === 'user@example.com') {
+                  reject('This user is already registered');
                 } else {
-                  reject('Invalid email or password');
+                  resolve({ token: 'fake-jwt-token' });
                 }
               }, 1000);
             },
           );
           set({ token: response.token, loading: false });
         } catch (error) {
+          set({
+            error: error as string,
+          });
           console.error(error);
         }
       },
@@ -83,16 +87,13 @@ export const useAuthStore = create(
           const response = await new Promise<{ data: string; status: number }>(
             (resolve, reject) => {
               setTimeout(() => {
-                if (email) {
+                if (email === 'user@example.com') {
                   resolve({
                     data: 'Password reset confirmation code was sent',
                     status: 200,
                   });
                 } else {
-                  reject({
-                    data: 'Email is not registered',
-                    status: 500,
-                  });
+                  reject('Email is not registered');
                 }
               }, 1000);
             },
@@ -102,6 +103,9 @@ export const useAuthStore = create(
             callback?.();
           }
         } catch (error) {
+          set({
+            error: error as string,
+          });
           console.error(error);
         }
       },
@@ -116,10 +120,7 @@ export const useAuthStore = create(
                     status: 200,
                   });
                 } else {
-                  reject({
-                    data: 'Incorrect code',
-                    status: 500,
-                  });
+                  reject('Incorrect code');
                 }
               }, 1000);
             },
@@ -129,6 +130,9 @@ export const useAuthStore = create(
             callback?.();
           }
         } catch (error) {
+          set({
+            error: error as string,
+          });
           console.error(error);
         }
       },
@@ -161,6 +165,11 @@ export const useAuthStore = create(
       },
       logout: async () => {
         set({ token: null });
+      },
+      cleanError: () => {
+        set({
+          error: null,
+        });
       },
     }),
     {

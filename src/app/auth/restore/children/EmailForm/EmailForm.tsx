@@ -5,7 +5,8 @@ import { useEmailFormViewModel } from './EmailForm.viewmodel';
 import styles from '@/app/auth/auth.module.css';
 
 export const EmailForm = () => {
-  const { handleSubmit, handleChange, errors } = useEmailFormViewModel();
+  const { handleSubmit, handleChange, errors, serverError } =
+    useEmailFormViewModel();
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
@@ -22,6 +23,7 @@ export const EmailForm = () => {
         <button type="submit" className={styles.btn}>
           Restore
         </button>
+        {serverError && <div className={styles.error}>{serverError}</div>}
       </div>
       <div className={styles.nav}>
         <div>Remember account?</div>

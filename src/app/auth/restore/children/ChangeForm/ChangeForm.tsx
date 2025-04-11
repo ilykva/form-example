@@ -28,7 +28,7 @@ export const ChangeForm = () => {
       />
       <div className={styles.btnWrapper}>
         <button type="submit" className={styles.btn}>
-          <span>Change</span>
+          <span className={styles.btnContent}>Change</span>
         </button>
       </div>
     </form>

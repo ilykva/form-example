@@ -21,7 +21,7 @@ export const EmailForm = () => {
       />
       <div className={styles.btnWrapper}>
         <button type="submit" className={styles.btn}>
-          <span>Restore</span>
+          <span className={styles.btnContent}>Restore</span>
         </button>
         {serverError && <div className={styles.error}>{serverError}</div>}
       </div>

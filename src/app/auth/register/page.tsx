@@ -42,7 +42,7 @@ const Register = () => {
         />
         <div className={styles.btnWrapper}>
           <button type="submit" className={styles.btn}>
-            <span>Sign up</span>
+            <span className={styles.btnContent}>Sign up</span>
           </button>
           {serverError && <div className={styles.error}>{serverError}</div>}
         </div>

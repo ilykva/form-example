@@ -33,7 +33,7 @@ const Login = () => {
         />
         <div className={styles.btnWrapper}>
           <button type="submit" className={styles.btn}>
-            <span>Login</span>
+            <span className={styles.btnContent}>Login</span>
           </button>
           {serverError && <div className={styles.error}>{serverError}</div>}
         </div>

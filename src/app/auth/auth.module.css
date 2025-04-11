@@ -133,7 +133,7 @@
     z-index: 0;
   }
 
-  span {
+  .btnContent {
     position: relative;
     font-weight: 500;
     z-index: 2;

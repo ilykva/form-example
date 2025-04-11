@@ -19,7 +19,7 @@ export const ConfirmForm = () => {
       />
       <div className={styles.btnWrapper}>
         <button type="submit" className={styles.btn}>
-          Restore
+          <span>Restore</span>
         </button>
       </div>
     </form>

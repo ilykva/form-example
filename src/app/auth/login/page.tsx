@@ -22,6 +22,7 @@ const Login = () => {
           onChange={handleChange}
         />
         <Input
+          autoComplete="password"
           error={errors.password}
           type="password"
           label="Password"
@@ -32,7 +33,7 @@ const Login = () => {
         />
         <div className={styles.btnWrapper}>
           <button type="submit" className={styles.btn}>
-            Login
+            <span>Login</span>
           </button>
           {serverError && <div className={styles.error}>{serverError}</div>}
         </div>
